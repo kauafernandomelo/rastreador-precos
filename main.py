@@ -219,18 +219,22 @@ Link:
 
     email["To"] = email_destino
 
-    servidor = smtplib.SMTP("smtp.gmail.com", 587)
+servidor = smtplib.SMTP("smtp.gmail.com", 587)
 
-    servidor.starttls()
+servidor.starttls()
 
-    servidor.login(email_remetente, senha_email)
+print("EMAIL:", email_remetente)
+print("SENHA:", senha_email)
+print("DESTINO:", email_destino)
 
-    servidor.send_message(email)
+servidor.login(email_remetente, senha_email)
 
-    servidor.quit()
+servidor.send_message(email)
 
-    print("\nEmail enviado com sucesso!")
+servidor.quit()
 
-    navegador.close()
+print("\nEmail enviado com sucesso!")
+
+navegador.close()
 
 conn.close()
