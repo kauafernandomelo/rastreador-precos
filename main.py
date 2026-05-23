@@ -43,7 +43,7 @@ conn.commit()
 
 with sync_playwright() as p:
 
-    navegador = p.chromium.launch(headless=False)
+    navegador = p.chromium.launch(headless=True)
 
     pagina = navegador.new_page()
 
