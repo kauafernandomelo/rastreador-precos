@@ -62,7 +62,7 @@ O projeto acessa automaticamente páginas de produtos, captura preços em tempo 
 
 # 🖼 Demonstração do E-mail
 
-![Demo do Email](./<img width="1920" height="1080" alt="demo" src="https://github.com/user-attachments/assets/a23e1210-7438-412a-8611-61969b55eb8b" />
+![Demo do Email](.<img width="1920" height="1080" alt="demo" src="https://github.com/user-attachments/assets/a23e1210-7438-412a-8611-61969b55eb8b" />
 )
 
 ---
