@@ -9,14 +9,14 @@ import os
 # CONFIGURAÇÕES
 # =========================================
 
-preco_limite = 2500
-servidor.starttls()
+preco_limite = 2900
 
-print("EMAIL:", email_remetente)
-print("SENHA:", senha_email)
-print("DESTINO:", email_destino)
+# pega os dados do GitHub Secrets
+email_remetente = os.getenv("EMAIL_REMETENTE")
 
-servidor.login(email_remetente, senha_email)
+senha_email = os.getenv("SENHA_EMAIL")
+
+email_destino = os.getenv("EMAIL_DESTINO")
 
 url_produto = "https://www.kabum.com.br/produto/1012610/placa-de-video-msi-geforce-rtx-5060-ti-shadow-2x-oc-plus-nvidia-8gb-gddr7-128-bit-g506t-8s2cp"
 
@@ -137,7 +137,7 @@ with sync_playwright() as p:
         status = "🆕 Primeiro preço registrado."
 
     # =========================================
-    # ANALISAR SE O PREÇO ESTÁ BOM
+    # AVALIAÇÃO
     # =========================================
 
     avaliacao = ""
@@ -155,7 +155,7 @@ with sync_playwright() as p:
         avaliacao = "❌ Preço ainda está alto."
 
     # =========================================
-    # MOSTRAR TERMINAL
+    # TERMINAL
     # =========================================
 
     print("\nProduto:")
@@ -180,7 +180,7 @@ with sync_playwright() as p:
     print(avaliacao)
 
     # =========================================
-    # ENVIAR EMAIL
+    # EMAIL
     # =========================================
 
     mensagem = f"""
@@ -219,22 +219,28 @@ Link:
 
     email["To"] = email_destino
 
-servidor = smtplib.SMTP("smtp.gmail.com", 587)
+    # cria servidor SMTP
+    servidor = smtplib.SMTP("smtp.gmail.com", 587)
 
-servidor.starttls()
+    # ativa segurança
+    servidor.starttls()
 
-print("EMAIL:", email_remetente)
-print("SENHA:", senha_email)
-print("DESTINO:", email_destino)
+    # debug
+    print("EMAIL:", email_remetente)
+    print("SENHA:", senha_email)
+    print("DESTINO:", email_destino)
 
-servidor.login(email_remetente, senha_email)
+    # login
+    servidor.login(email_remetente, senha_email)
 
-servidor.send_message(email)
+    # envia email
+    servidor.send_message(email)
 
-servidor.quit()
+    # fecha servidor
+    servidor.quit()
 
-print("\nEmail enviado com sucesso!")
+    print("\nEmail enviado com sucesso!")
 
-navegador.close()
+    navegador.close()
 
 conn.close()
