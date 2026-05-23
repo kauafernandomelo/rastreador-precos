@@ -1,15 +1,20 @@
 name: Rastreador de Preços
 
 on:
-  schedule:
-    - cron: '0 3 * * *'
-
   workflow_dispatch:
+
+  schedule:
+    - cron: "0 3 * * *"
 
 jobs:
   executar:
 
     runs-on: ubuntu-latest
+
+    env:
+      EMAIL_REMETENTE: ${{ secrets.EMAIL_REMETENTE }}
+      SENHA_EMAIL: ${{ secrets.SENHA_EMAIL }}
+      EMAIL_DESTINO: ${{ secrets.EMAIL_DESTINO }}
 
     steps:
 
@@ -19,12 +24,12 @@ jobs:
       - name: Instalar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
-      - name: Instalar dependências
+      - name: Instalar bibliotecas
         run: |
           pip install -r requirements.txt
-          playwright install
+          playwright install chromium
 
       - name: Executar script
         run: python main.py
