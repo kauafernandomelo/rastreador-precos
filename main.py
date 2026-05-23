@@ -11,11 +11,11 @@ import os
 
 preco_limite = 2500
 
-email_remetente = os.getenv("kauafernando098@gmail.com")
+email_remetente = os.getenv("EMAIL_REMETENTE")
 
-senha_email = os.getenv("ufmq pbow aqpg qqwd")
+senha_email = os.getenv("SENHA_EMAIL")
 
-email_destino = os.getenv("kauafernando098@gmail.com")
+email_destino = os.getenv("EMAIL_DESTINO")
 
 url_produto = "https://www.kabum.com.br/produto/1012610/placa-de-video-msi-geforce-rtx-5060-ti-shadow-2x-oc-plus-nvidia-8gb-gddr7-128-bit-g506t-8s2cp"
 
